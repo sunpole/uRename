@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="uRename — локальное переименование файлов в Windows по умной маске. Нули слева, транслитерация, предпросмотр и открытый исходный код.">
+  <meta name="theme-color" content="#15221d">
+  <meta property="og:title" content="uRename — порядок начинается с имени">
+  <meta property="og:description" content="Одна маска для всего списка. Умные номера, транслитерация и понятный предпросмотр.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sunpole.github.io/uRename/">
+  <title>uRename — порядок начинается с имени</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+<header class="header">
+  <a class="brand" href="./"><img src="mark.svg" alt="" width="36" height="36">uRename</a>
+  <nav aria-label="Главная навигация"><a href="#start">Начать</a><a href="#mask">Маска</a><a href="#releases">Что нового</a><a class="github" href="https://github.com/sunpole/uRename">GitHub ↗</a></nav>
+</header>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow"><span class="dot"></span> WINDOWS · PYTHON · OPEN SOURCE</p>
+      <h1>Порядок<br>начинается<br>с <em>имени.</em></h1>
+      <p class="lead">Превратите список длинных имён в единый формат. Задайте маску, посмотрите результат — и переименуйте файлы одним запуском.</p>
+      <div class="actions"><a class="button primary" href="https://github.com/sunpole/uRename/releases/latest">Скачать uRename <span>↗</span></a><a class="button secondary" href="#start">Как это работает ↓</a></div>
+      <p class="subtle">v{{VERSION}} · {{RELEASED}} · MIT · Без сторонних библиотек</p>
+    </div>
+    <div class="demo" aria-label="Пример преобразования имён">
+      <div class="demo-top"><span class="dots">● ● ●</span><span>preview_rename.bat</span><span class="live">PREVIEW</span></div>
+      <div class="demo-body">
+        <p class="tiny">ВАША МАСКА</p>
+        <div class="mask-code"><span>99</span>_<span>999</span>_<b>Aaaaaaaa</b></div>
+        <p class="tiny before-label">ДО</p>
+        <p class="filename muted">1_15_Цефадин.pdf</p>
+        <p class="filename muted">15_Цефадин.pdf</p>
+        <div class="arrow">↓ <span>Номера + транслитерация + регистр</span></div>
+        <p class="tiny">ПОСЛЕ</p>
+        <p class="filename result">01_015_Tsefadin.pdf</p>
+        <p class="filename result">015_Tsefadin.pdf</p>
+        <p class="demo-foot"><span>✓</span> Сначала просмотр. Всё под вашим контролем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="trust"><div class="wrap"><span>Локальная обработка</span><span>Папки и расширения сохраняются</span><span>Проверка совпадений</span><span>Открытый код</span></div></div>
+<section class="section wrap" id="start">
+  <div class="section-heading"><p class="eyebrow dark">01 / БЫСТРЫЙ СТАРТ</p><h2>Четыре шага.<br>Имена в порядке.</h2><p>Нужны Windows и Python 3.9 или новее. Скачайте архив из Releases и распакуйте в отдельную папку.</p></div>
+  <div class="steps">
+    <article><span class="step">01</span><h3>Добавьте файлы</h3><p>Вставьте пути в <code>files.txt</code>, по одному на строку. Кавычки из «Копировать как путь» подходят.</p></article>
+    <article><span class="step">02</span><h3>Задайте маску</h3><p>Откройте <code>mask.txt</code>. Выберите количество цифр, букв и нужный регистр.</p></article>
+    <article><span class="step">03</span><h3>Посмотрите результат</h3><p>Запустите <code>preview_rename.bat</code>. Программа покажет будущие имена и проверит конфликты.</p></article>
+    <article><span class="step">04</span><h3>Переименуйте</h3><p>Запустите <code>run_rename.bat</code>. После операции обновите пути в списке для следующего запуска.</p></article>
+  </div>
+  <aside class="note">Скачали исходники? Первый запуск создаст <code>files.txt</code> и <code>mask.txt</code>. Заполните их и запустите программу снова.</aside>
+</section>
+<section class="mask-section" id="mask">
+<div class="wrap section">
+  <div class="section-heading"><p class="eyebrow dark">02 / ЯЗЫК МАСКИ</p><h2>Четыре символа.<br>Много возможностей.</h2><p>Числа дополняются нулями слева, слова переводятся в латиницу. Каждый буквенный блок берёт одно слово.</p></div>
+  <div class="symbols">
+    <article><span class="symbol">9</span><h3>Цифра</h3><p><code>99</code>: 1 → 01<br><code>999</code>: 15 → 015</p></article>
+    <article><span class="symbol">A</span><h3>Заглавная</h3><p>Одна заглавная<br>латинская буква.</p></article>
+    <article><span class="symbol lower">a</span><h3>Строчная</h3><p>Одна строчная<br>латинская буква.</p></article>
+    <article><span class="symbol">_</span><h3>Разделитель</h3><p>Подчёркивание между<br>найденными частями.</p></article>
+  </div>
+  <div class="split">
+    <div><h3>Один номер или два? Маска разберётся.</h3><p>Начальные номера заполняют числовые блоки справа. При одном номере первый блок и лишнее подчёркивание пропускаются.</p><pre><code>Маска: 99_999_AAAAAAA
+
+11_15_текст → 11_015_TEKST
+   15_текст →    015_TEKST
+      текст →        TEKST</code></pre></div>
+    <div><h3>Уберите слово «инструкция».</h3><p>Добавьте отдельную строку <code>!инструкция</code>. Режим удаляет целое слово во всех падежах и числах, независимо от регистра.</p><pre><code>99_999_Aaaaaaaaaa
+!инструкция
+
+3_41_Инструкция Ветацеф.pdf
+→ 03_041_Vetatsef.pdf</code></pre><p class="small">Чтобы отключить: <code># !инструкция</code>. Части слов, например «видеоинструкция», сохраняются.</p></div>
+  </div>
+</div>
+</section>
+<section class="section wrap" id="details">
+  <div class="section-heading"><p class="eyebrow dark">03 / ПОНЯТНЫЕ ПРАВИЛА</p><h2>Без сюрпризов<br>при запуске.</h2></div>
+  <div class="faq">
+    <details open><summary>Что проверяется до переименования?</summary><p>Весь список: существование файлов, занятые имена, совпадения результатов, пустые и запрещённые имена Windows, слишком длинные номера. Папки и символические ссылки отклоняются. Дубли строк обрабатываются один раз.</p></details>
+    <details><summary>Что будет, если слово или номер длиннее маски?</summary><p>Слово обрежется до длины буквенного блока после транслитерации. Номер не обрезается: программа остановит запуск и попросит добавить символы 9. Короткое слово не дополняется.</p></details>
+    <details><summary>Как сохранить два слова или число после текста?</summary><p>Добавьте второй блок: <code>999_Aaaaaaaa_Aaaaaa</code> для двух слов или <code>999_Aaaaaaaa_99</code> для слова с последующим числом. Пробелы и дефисы разделяют слова. Числа после текста не заполняют начальные числовые блоки.</p></details>
+    <details><summary>Есть ли автоматический откат?</summary><p>Нет. При сбое сети или доступа уже во время работы часть файлов может быть переименована. Окно показывает результат каждого действия. Предпросмотр не резервирует имена. Перед новой операцией обновите files.txt.</p></details>
+    <details><summary>Куда отправляются имена файлов?</summary><p>Программа обрабатывает их локально и не отправляет телеметрию. Сетевые папки доступны средствами Windows. Личные files.txt и mask.txt исключены из Git и никогда не используются при сборке публичного ZIP.</p></details>
+    <details><summary>Можно ли запустить через командную строку?</summary><pre><code>python -X utf8 -B uRename.py --init
+python -X utf8 -B uRename.py --preview
+python -X utf8 -B uRename.py
+python -X utf8 -B uRename.py --version</code></pre><p>Реальное переименование поддерживается в Windows. На других ОС доступен только просмотр. Запуск от администратора не требуется.</p></details>
+  </div>
+</section>
+<section class="release-section" id="releases">
+<div class="wrap section">
+  <div class="section-heading"><p class="eyebrow dark">04 / ПАТЧНОУТЫ</p><h2>Развивается открыто.</h2><p>Каждое изменение — в истории версий. Код, метаданные и документация выпускаются вместе.</p></div>
+  <div class="release-grid">
+    <aside class="release-side"><span class="tiny">ТЕКУЩАЯ ВЕРСИЯ</span><strong>v{{VERSION}}</strong><p>{{RELEASED}}</p><a href="https://github.com/sunpole/uRename/releases/latest">Скачать выпуск ↗</a><a href="version.json">version.json ↗</a><a href="VERSION.md">VERSION.md ↗</a><a href="CHANGELOG.md">Полный CHANGELOG ↗</a></aside>
+    <div>{{RELEASES}}</div>
+  </div>
+</div>
+</section>
+<section class="wrap cta"><div><h2>Меньше ручной работы.<br>Больше порядка.</h2><p>Попробуйте маску на нескольких файлах — начните с просмотра.</p></div><a class="button primary" href="https://github.com/sunpole/uRename/releases/latest">Скачать uRename ↗</a></section>
+</main>
+<footer class="wrap footer"><a class="brand" href="./"><img src="mark.svg" alt="" width="28" height="28">uRename</a><span>© 2026 sunpole · MIT</span><div><a href="https://github.com/sunpole/uRename">Исходный код</a><a href="https://github.com/sunpole/uRename/issues/new/choose">Обратная связь</a><a href="https://github.com/sunpole/uRename/blob/main/AUDIT.md">Аудит</a></div></footer>
+</body>
+</html>

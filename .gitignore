@@ -1,0 +1,16 @@
+# Private, machine-specific configuration
+/files.txt
+/mask.txt
+.env
+.env.*
+!.env.example
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+/dist/
+/_site/
+/work/
+.DS_Store
+Thumbs.db

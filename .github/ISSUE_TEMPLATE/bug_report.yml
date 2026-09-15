@@ -1,0 +1,24 @@
+name: Ошибка
+description: Сообщить о проблеме в uRename
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: textarea
+    id: example
+    attributes:
+      label: Обезличенный пример
+      description: Исходное имя, маска, ожидаемое и фактическое имя. Не вставляйте реальные сетевые пути.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Версии uRename, Python и Windows
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Как повторить
+    validations:
+      required: true
