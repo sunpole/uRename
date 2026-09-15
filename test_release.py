@@ -52,7 +52,7 @@ class ReleaseTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as package:
             for name in package.namelist():
                 self.assertNotIn(b"PRIVATE_SENTINEL", package.read(name))
-            prefix = "uRename-v" + json.loads((self.root / "version.json").read_text())["version"] + "/"
+            prefix = "uRename-v" + json.loads((self.root / "version.json").read_text(encoding="utf-8"))["version"] + "/"
             self.assertEqual(package.read(prefix + "files.txt"), b"")
             self.assertEqual(package.read(prefix + "mask.txt"), (self.root / "mask.example.txt").read_bytes())
 
